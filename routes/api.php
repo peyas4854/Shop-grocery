@@ -1,13 +1,28 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Peyas\PreOrderForm\PreOrderForm;
 
-//Route::get('/user', function (Request $request) {
-//    return $request->user();
-//})->middleware('auth:sanctum');
 
-PreOrderForm::routes([
-    'orders'
-]);
+Route::middleware('guest')->group(function () {
+    Route::post('login', [LoginController::class, 'login']);
+    PreOrderForm::routes([
+        'pre-order',
+    ]);
+});
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', [LoginController::class, 'logout']);
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    PreOrderForm::routes([
+        'pre-order-delete',
+    ]);
+});
+
+
+
