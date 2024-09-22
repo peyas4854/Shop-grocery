@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -29,9 +29,8 @@ class UserSeeder extends Seeder
             ],
         ];
 
-        foreach ($data as $user) {
-            User::create($user);
+        foreach ($data as $userData) {
+            User::create($userData);
         }
     }
-
 }
