@@ -47,6 +47,10 @@
     Email: manager@manager.com
     password - 1234678
 
+### Postman API Documentation
+
+    https://documenter.getpostman.com/view/20257260/
+
 
 
 
